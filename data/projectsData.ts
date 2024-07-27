@@ -13,7 +13,7 @@ const projectsData: Project[] = [
     for.`,
     imgSrc: '/static/images/google.png',
     href: 'https://www.google.com',
-  },
+  }
 ]
 
 export default projectsData
