@@ -1,16 +1,16 @@
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {
-  title: 'Starter Blog',
+  title: "Charanpreet's Blogs",
   author: 'Charanpreet Singh',
-  headerTitle: 'Blog',
+  headerTitle: 'blog.charanpreet.dev',
   description:
     'This page contains my personal resume and blogs. Everything was written by myself, if there is any other Author, they will always be mentioned at the top.',
   language: 'en-us',
   theme: 'dark', // system, dark or light
-  siteUrl: 'https://tailwind-nextjs-starter-blog.vercel.app',
+  siteUrl: 'https://blog.charanpreet.dev',
   siteRepo: 'https://github.com/cx510/blog',
   siteLogo: '/static/images/logo.png',
-  socialBanner: '/static/images/twitter-card.png',
+  // socialBanner: '/static/images/twitter-card.png',
   // mastodon: 'https://mastodon.social/@mastodonuser',
   email: 'charanpreet@charanpreet.dev',
   github: 'https://github.com/cx510',
