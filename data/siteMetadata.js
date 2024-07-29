@@ -4,7 +4,7 @@ const siteMetadata = {
   author: 'Charanpreet Singh',
   headerTitle: 'blog.charanpreet.dev',
   description:
-    'This page contains my personal resume and blogs. Everything was written by myself, if there is any other Author, they will always be mentioned at the top.',
+    'This page contains my personal resume and blogs. Everything was written by myself, if there is any other author involved, they will always be mentioned at the top.',
   language: 'en-us',
   theme: 'dark', // system, dark or light
   siteUrl: 'https://blog.charanpreet.dev',
