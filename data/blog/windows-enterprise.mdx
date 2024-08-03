@@ -7,7 +7,7 @@ summary: This guide contains information for setting up Windows 11 Enterprise. Y
 images: ['']
 ---
 
-**You may open a PR for typos or any other correction**
+![microsoft](/static/images/microsoft2.png)
 
 This guide contains information for setting up [Windows 11 Enterprise](https://www.microsoft.com/en-us/microsoft-365/windows/windows-11-enterprise). You can also use it at Home for doing important work. Since there are thousands of GPOs and settings in windows, I won’t be covering all of them. Keeping that in mind, most of the policies which are privacy invasive and increase attack surface have been taken care of in this guide. If you have any doubts or you think after enabling a certain policy your tools/software which you daily use isn’t working. Then you may go back to certain policy and disable it. You can always re-enable/disable in GPOs!
 
@@ -47,6 +47,8 @@ Let’s start by getting an Enterprise copy of Windows 11. After that I will mov
 > **Note:** Before editing anything, if you edit in computer config, then settings only apply to computers that are part of the security filtering of the GPO. While user configuration settings apply to users that are part of the security filtering of the GPO. I will be applying all the policies system widee in computer configuration.
 
 ### Edge Browser With Super Duper Secure Mode
+
+![edge](/static/images/edge.png)
 
 [Edge](https://www.microsoft.com/en-us/edge/download) should be your MAIN browser on Widnows. It's one of the most secure browser once you enable super duper secure mode by Microsoft. You can learn more about it from this great [article by Johnathan Norma](https://microsoftedge.github.io/edgevr/posts/Super-Duper-Secure-Mode/). You're basically making a trade-off when it comes to performance but it's not by much and you should enable it because it will disable JIT V8 comepletely. This will reduce attack surface significantly. Most of the CVEs in recent years (At least 40-45%) wererelated to Just-In-Time compiler in browsers. You can disable JIT in other Chromium browsers (V8 Optimizer perms). Although, I haven't tried it with others, it usually works it's just that on MS edge you can keep it enable it for some sites while on other browser it will disable it completely. I will keep it disable all the way as I can wait few milliseconds and I don't see it affecting my daily usage.
 
@@ -88,7 +90,9 @@ Edge is a secure browser, not a privacy oriented browser. Privacy would go to To
 
 ### Windows Settings
 
- We'll disable most of them using GPOs but you should still take a a look at them and change them because it doesn't hurt to check it again.
+![windows-security-center](/static/images/windows-security-center.png)
+
+ I will disable most of the invasive stuff using GPOs but you should still take a a look at them and change them. it doesn't hurt to check it again.
  
  1. Start by removing all the app you don't need including MS Apps like paint, Xbox, etc. To uninstall, go to Settings - Apps - Install Apps - **Uninstall** by selecting the app you want to remove.
  2. Go to **personalization** and change Windows to Light/Dark mode with your favorite wallpaper from App Store or download and change it manually.
@@ -105,7 +109,9 @@ Edge is a secure browser, not a privacy oriented browser. Privacy would go to To
 10. Last things you should take care of is Apps. Do not install apps that you don't know anything about. First you should check if you App is available as a PWA (Progressive Web Apps). If it is, then avoid installing it separately and use it as a browser app. Installing Electron apps separately will only make you more vulnerable. For example, Whatsapp Web give you a option to use Whatsapp separately as a web app. It works as good as their regular app without any installation of their binary files on to system. Even notifications work great. Check out your apps, if they have a PWA.
 
 ### Windows GPO & WDAC
- 
-I came accross this [GitHub Repositery By Starchturrets](https://github.com/starchturrets/windows-shenanigans/tree/main/WDAC) which has some policies for Windows. This repo also contains a basic WDAC Policy srcipt. If you're making use of WDAC policies, make sure you are using the **Deafult Windows Mode** mentioned there. It doesn't break anything for me, you should first try using all your apps for a day, if nothing breaks then keep it enabled. I'm using 3rd template and also making use of falsely blocked allowlist to enable apps flagged for nothing. WDAC notes are well versed and explained line by line, you should check them out here.
 
-The most important policies you should consider when setting up Windows in an Eneterprise Worksapce is [CIS (Center of Internet Security)] Windows Security Baseline (https://learn.microsoft.com/en-us/windows/security/operating-system-security/device-management/windows-security-configuration-framework/windows-security-baselines). They have provided a [list](https://learn.microsoft.com/en-us/mem/intune/protect/security-baseline-settings-mdm-all?pivots=mdm-23h2) with detailed explanation. You will need to check and make sure everything is working afterwards because if it doesn't you need to troubleshoot the issue yourself. If you want to create a final policy for all the system and have the most control, be ready for fixing any issues you will come accross down the line.
+I came accross this [GitHub Repositery By Starchturrets](https://github.com/starchturrets/windows-shenanigans/tree/main/WDAC) which has policies for Windows. This repo also contains a basic WDAC Policy srcipt. If you're making use of WDAC policies, make sure you are using the **Deafult Windows Mode** mentioned there. It doesn't break anything for me, you should first try using all your apps for a day, if nothing breaks then keep it enabled. I'm using 3rd template and also making use of falsely blocked allowlist to enable apps flagged because of a false positive. WDAC notes are well versed and explained line by line, you should check them out here.
+
+The most important policies you should consider when setting up Windows in an Eneterprise Worksapce is CIS (Center of Internet Security) [Windows Security Baseline](https://learn.microsoft.com/en-us/windows/security/operating-system-security/device-management/windows-security-configuration-framework/windows-security-baselines). They have also provided a [complete list](https://learn.microsoft.com/en-us/mem/intune/protect/security-baseline-settings-mdm-all?pivots=mdm-23h2) with detailed explanation. You will need to check and make sure everything is working afterwards because if it doesn't you need to troubleshoot the issue yourself. If you want to create a final policy for all the systems and have the most control then be ready for fixing any issues you will come accross down the line.
+
+**You may open a PR for typos**
