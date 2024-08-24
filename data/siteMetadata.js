@@ -4,7 +4,7 @@ const siteMetadata = {
   author: 'Charanpreet Singh',
   headerTitle: 'blog.charanpreet.dev',
   description:
-    'This page contains my personal resume and blogs. Everything was written by myself, if there is any other author involved, they will always be mentioned at the top.',
+    'This page contains my personal resume and blogs. Everything was written by myself, if there is any other author involved, they will always be mentioned at the top. Make use of ⌘-k or ctrl-k to use the search bar!',
   language: 'en-us',
   theme: 'dark', // system, dark or light
   siteUrl: 'https://blog.charanpreet.dev',
@@ -47,7 +47,7 @@ const siteMetadata = {
   newsletter: {
     // supports mailchimp, buttondown, convertkit, klaviyo, revue, emailoctopus
     // Please add your .env file and modify it according to your selection
-    provider: 'buttondown',
+    provider: '',
   },
   comments: {
     // If you want to use an analytics provider you have to add it to the

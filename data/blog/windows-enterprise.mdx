@@ -5,11 +5,14 @@ tags: ['windows', 'edge']
 draft: false
 summary: This guide contains information for setting up Windows 11 Enterprise. You can also use it at Home for doing important work.
 images: ['']
+layout: PostSimple
 ---
 
 ![microsoft](/static/images/windows-enterprise/microsoft.png)
 
-*Last updated on Saturday, August 3, 2024*
+<TOCInline toc={props.toc} exclude="Overview" toHeading={4} />
+
+*Last updated on Saturday, August 24, 2024*
 
 This guide contains information for setting up [Windows 11 Enterprise](https://www.microsoft.com/en-us/microsoft-365/windows/windows-11-enterprise). You can also use it at Home for doing important work. Since there are thousands of GPOs and settings in windows, I won’t be covering all of them. Keeping that in mind, most of the policies which are privacy invasive and increase attack surface have been taken care of in this guide. If you have any doubts or you think after enabling a certain policy your tools/software which you daily use isn’t working. Then you may go back to certain policy and disable it. You can always re-enable/disable in GPOs!
 
@@ -17,7 +20,8 @@ I will be activating Windows using [MAS (Microsoft Activation Scripts)](https://
 
 Let’s start by getting an Enterprise copy of Windows 11. After that I will move over to setup my Edge Enterprise Policies. Then with GPO we will disable most (almost all) of the privacy invasive stuff & work on Microsoft’s ASR (Attack Surface Reduction) GPOs.
 
-> **Note:** You can’t disable 100% of the privacy invasive stuff on Windows 11 Professional but it does allow to have most of the control one needs on a operating system because it allows you add GPOs like Windows 11 Enterprise. If you can’t get an Enterprise Build then get a Professional Build. Anything below these two is something I personally wouldn’t recommend to anyone.
+> [!NOTE]
+> You can’t disable 100% of the privacy invasive stuff on Windows 11 Professional but it does allow to have most of the control one needs on a operating system because it allows you add GPOs like Windows 11 Enterprise. If you can’t get an Enterprise Build then get a Professional Build. Anything below these two is something I personally wouldn’t recommend to anyone.
 
 ### Getting A Copy Of Windows 11 Enterprise for setup!
 
@@ -31,7 +35,8 @@ Let’s start by getting an Enterprise copy of Windows 11. After that I will mov
 	- For Mac you can download CrystalFetch from App Store. Once you are able to install [CrystalFetch](https://apps.apple.com/us/app/crystalfetch-iso-downloader/id6454431289) then you can download Windows 11 Enterprise for x64 and Arm systems.
 	- On Linux visiting Windows 11 Enterprise Page and giving your Company/Organisation information for downloading. I don't know any other way for downloading Windows on Linux. You can create a pull request and change this point if you know of any.
 
-> **Note:** If you’re planning to use Windows 11 in a VM then UTM for Mac (With Spice Drivers) and KVM/QEMU (With RHEL Virtio Drivers) are your best options.
+> [!IMPORTANT]
+> If you’re planning to use Windows 11 in a VM then UTM for Mac (With Spice Drivers) and KVM/QEMU (With RHEL Virtio Drivers) are your best options.
 
 3. Now we need to flash Windows 11 ISO image to a flash drive (8/16 GB of storage would be enough). Use BalenaEtcher (Mac, Linux) or Rufus (Windows) for flashing ISO image to a flash drive.
 4. Next step would be to enable secure boot and TPM for performing basic security checks needed after a successful boot. TPM not just it helps in integrity checks of OS but it also manages Bitlocker keys. Enable it before procceding else you won’t be able to install Windows. You can enable it in motherboards bios settings by pressing del or F10/F11, depending on your motherboard. For more information read our manufacturer’s manual.
@@ -39,7 +44,8 @@ Let’s start by getting an Enterprise copy of Windows 11. After that I will mov
 6. Install Windows 11 by pressing next as many times as needed. The only step where you need to stop for a minutre would be Partition Table. If you have anything on your drive then you may first back it up because it will format your entire drive. If you don’t need anything, click on format and keep pressing next until you come to “your system is getting ready” screen.
 7. Uncheck all the privacy invasive options you will see after first boot. There will be around 5-6 options in total. Turn every single one of them off. You can also do them later in the settings or in GPOs. Know that you can’t disable all of them in windows professional.
 
-> **Note:** Don't add any microsoft account. It will save a copy of your entire settings, your installed app, and so much more after every install. If you want to start new and privacy friendly, don't add a account. You can skip adding account as explained in this [guide](https://www.windowscentral.com/how-set-windows-11-without-microsoft-account). Once you enter main screen the first thing you should do is activate windows by yusing your official key or by using script from massgrave.dev
+> [!NOTE]
+> Don't add any microsoft account. It will save a backup of your entire settings, your installed app, and other details on every install. If you want to start new and privacy friendly, don't add a account. You can skip adding account as explained in this [guide](https://www.windowscentral.com/how-set-windows-11-without-microsoft-account). Once you enter main screen the first thing you should do is activate windows by yusing your official key or by using script from massgrave.dev
 
 8. Now you need to install Windows GPO template for applying policies. Search for Windows administrative templates for your particular build. You will come across a Microsoft official page from where you can download and install them. Since I’m using Win 11 23H2 I will be downloading administrative builds for that particular version. Follow this [guide](https://windowsreport.com/windows-11-admx/) if you have any issues.
 9. I would also recommend to install MS Edge Policies while setting up GPO template for your windows. You can find the deatiled write up for it [here](https://learn.microsoft.com/en-us/deployedge/configure-microsoft-edge#1-download-and-install-the-microsoft-edge-administrative-template)
@@ -94,7 +100,8 @@ Edge is a secure browser, not a privacy oriented browser. Privacy would go to To
 
 ![windows-security-center](/static/images/windows-enterprise/security-center.png)
 
- I will disable most of the invasive stuff using GPOs but you should still take a a look at them and change them. it doesn't hurt to check it again.
+> [!IMPORTANT]
+> I will disable most of the invasive stuff using GPOs but you should still take a a look at them and change them. it doesn't hurt to check it again.
  
  1. Start by removing all the app you don't need including MS Apps like paint, Xbox, etc. To uninstall, go to Settings - Apps - Install Apps - **Uninstall** by selecting the app you want to remove.
  2. Go to **personalization** and change Windows to Light/Dark mode with your favorite wallpaper from App Store or download and change it manually.
@@ -116,4 +123,5 @@ I came accross this [GitHub Repositery By Starchturrets](https://github.com/star
 
 The most important policies you should consider when setting up Windows in an Enterprise Worksapce is CIS (Center of Internet Security) [Windows Security Baseline](https://learn.microsoft.com/en-us/windows/security/operating-system-security/device-management/windows-security-configuration-framework/windows-security-baselines). They have also provided a [complete list](https://learn.microsoft.com/en-us/mem/intune/protect/security-baseline-settings-mdm-all?pivots=mdm-23h2) with detailed explanation. You will need to check and make sure everything is working afterwards because if it doesn't you need to troubleshoot the issue yourself. If you want to create a final policy for all the systems and have the most control then be ready for fixing any issues you will come accross down the line.
 
-**You may open a PR for typos**
+> [!NOTE]
+> You may open a PR for typos
