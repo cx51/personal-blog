@@ -1,10 +1,11 @@
 ---
-title: Telegram Insecurities!
+title: How secure is Telegram?
 date: '2024-08-26'
 tags: ['telegram', 'security']
 draft: false
-summary: Highlighting Telegram Insecurities. Why you shouldn't use Telegram for sensitive conversations.
+summary: Highlighting Telegram's Insecurities. Why you shouldn't use Telegram for sensitive conversations.
 images: ['']
+layout: PostSimple
 ---
 
 <TOCInline toc={props.toc} exclude="Overview" toHeading={4} />
@@ -30,7 +31,7 @@ Telegram does release verifiable apps on their GitHub release pages which is gre
 
 If you read [Telegram’s privacy policy](https://telegram.org/privacy#3-what-personal-data-we-use) you’ll realise just how much data they collect when you setup your profile and send your first message. This data can include IP (Will keep it in logs for a year), usernames, phone number and other personal info you have given. it is always great if this sensitive data isn’t collected but not in this case. Also, they can do better with [concealing sensitive metadata](https://restoreprivacy.com/secure-encrypted-messaging-apps/telegram/) with care by encrypting all of it.
 
-## No Secret Chat Backup
+## No Secret Chat Backup (Usability Issue)
 
 Imagine you purchased a new device for communicating and you want to move all your “secure” secret chats from your old phone to your new phone. FYI, let me tell you that you can’t. Where most messaging apps allow you to securely upload your encrypted backup to cloud for future usage. Telegram doesn’t allow you to shift devices for secret chats. You can create a new secret chat on your new device but you won’t be getting all your previous messages since backing up those isn’t an option. Offline encrypted backup or at least cloud encrypted backups should be an option. This does allow for [PFS (perfect-forward secrecy)](https://hide.me/en/blog/perfect-forward-secrecy-what-is-it-exactly/) incase a device is compromised but when WhatsApp and Signal can make use of PFS and also allow backing up your chats regularly at the same time then why can’t Telegram with 800 million users? Usability is as much important as PFS in this case.
 
